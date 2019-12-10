@@ -1,16 +1,18 @@
 package com.myquotes.feature.detail
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.viewpager.widget.ViewPager
 import com.google.gson.Gson
 import com.myquotes.feature.detail.adapter.DetailQuotesPagerAdapter
+import com.myquotes.helper.ProgressDialogHelper
 import com.myquotes.model.DataCategory
 import com.myquotes.model.DataQuotes
 import com.myquotes.myquotes.R
-import com.myquotes.helper.ProgressDialogHelper
+import com.myquotes.widget.NonSwipeableViewPager
+
 
 class DetailQuotesActivity : AppCompatActivity(), DetailQuotesView {
 
@@ -20,8 +22,10 @@ class DetailQuotesActivity : AppCompatActivity(), DetailQuotesView {
 
     private lateinit var txtJudul: TextView
     private lateinit var toolbar: Toolbar
+    private lateinit var btnNext: Button
+    private lateinit var btnPrev: Button
 
-    private var mViewPager: ViewPager? = null
+    private var mViewPager: NonSwipeableViewPager? = null
     lateinit var dataCategory: DataCategory
     private var detailQuotesPagerAdapter: DetailQuotesPagerAdapter? = null
     val gson: Gson = Gson()
@@ -49,10 +53,22 @@ class DetailQuotesActivity : AppCompatActivity(), DetailQuotesView {
 
     override fun initView() {
         mViewPager = findViewById(R.id.view_pager)
+        btnNext = findViewById(R.id.btnNext)
+        btnPrev = findViewById(R.id.btnPrev)
     }
 
     override fun initListener() {
+        btnNext.setOnClickListener {
+            mViewPager?.setCurrentItem(getItem(+1), true)
+        }
 
+        btnPrev.setOnClickListener {
+            mViewPager?.setCurrentItem(getItem(-1), true)
+        }
+    }
+
+    private fun getItem(i: Int): Int {
+        return mViewPager!!.currentItem + i
     }
 
     override fun showDialog() {

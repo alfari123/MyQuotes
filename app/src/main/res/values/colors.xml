@@ -11,4 +11,8 @@
 
     <color name="placeholder_color">#dddddd</color>
     <color name="bg_color">#b53e3b3b</color>
+
+    <color name="transparant">#80FFFFFF</color>
+    <color name="blue">#0112FC</color>
+
 </resources>
