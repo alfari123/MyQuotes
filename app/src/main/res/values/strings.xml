@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyQuotes</string>
+    <string name="sample_text">Sample Text</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+
+    <string name="message_loading">Loading…</string>
+    <string name="go_setting">Go setting</string>
+    <string name="no_internet_connection_found_check_your_connection_or_try_again">No internet connection found. Check your connection or try again</string>
+    <string name="whoops">Whoops!</string>
+</resources>
